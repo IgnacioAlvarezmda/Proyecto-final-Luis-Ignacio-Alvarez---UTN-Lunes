@@ -1,48 +1,45 @@
 
-const videohistoria =document.querySelector("video");
-const botonplay =document.getElementById("boton_play");
-const botonpausa =document.getElementById("boton_pausa");
-
-const body= document.querySelector("body");
-
-const duracionvideo = document.querySelector("#duracion_video")
-
-body.addEventListener("DOMContentLoaded", ()=>{
-    let duracionconvertida= convertirtiempo(videohistoria.duration);
-    duracionvideo.textContent = videohistoria.duration;
-});
+const videohistoria= document.querySelector("video");
+const botonplay= document.getElementById("boton_play");
+const botonpausa= document.getElementById("boton_pausa");
 
 
-const convertirtiempo= (tiempo)=>{
-    if(tiempo>60){
-        let minutos=tiempo/60;}
-    else{
-        minutos=0;
-    }
-    segundos= tiempo%60;
-    return `${minutos}:${segundos}`;
+/*------mostrar duracion video------*/
+if (videohistoria){
+    const duracionvideo= document.querySelector("duracion_video");
+    const convertirtiempo= (tiempo)=>{
+        let tiempoconvertido= Math.floor(tiempo);
+        let minutos= Math.floor(tiempoconvertido / 60);
+        let segundos= tiempoconvertido % 60;
+
+        if (segundos<10){segundos = "0" + segundos;}
+
+        return `${minutos}:${segundos}`;
+        }
+
+    videohistoria.addEventListener("loadedmetadata",()=>{
+        let duracionfinal= convertirtiempo(videohistoria.duration);
+        duracionvideo.textContent= duracionfinal;
+        });
+
+    /*-------------play y pausa---------------*/
+
+    botonplay.addEventListener("click", ()=>{
+        videohistoria.play();
+        });
+
+    botonpausa.addEventListener("click", ()=>{
+        videohistoria.pause();
+        }); 
 }
-/*----------------------------*/
-
-botonplay.addEventListener("click", ()=>{
-    videohistoria.play();
-    console.log("El video se esta reproduciendo");
-});
-
-botonpausa.addEventListener("click", ()=>{
-    videohistoria.pause();
-    console.log("El video se ha pausado");
-}); 
 
 /*------------nav-------------*/
 
-const nav = document.getElementById('navegacion');
+const nav= document.querySelector('.navegacion');
 
 const transparentar_nav= ()=>{
-    if (window.scrollY > 0)
-        nav.classList.add('navegacion_escroleada');
-    else
-        nav.classList.remove('navegacion_escroleada');
+    if (window.scrollY > 0){
+        nav.classList.add('navegacion_escroleada');} 
+    else{nav.classList.remove('navegacion_escroleada');}
 }
-
 window.addEventListener('scroll', transparentar_nav);

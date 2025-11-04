@@ -7,13 +7,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="shotcut icon" href="../assets/logo.png" type="img/png" >
+    <link rel="shotcut icon" href="assets\imagenes\logo.png" type="img/png" >
     <!-- ARREGLAR ICONO NO FUNCIONA POR NO ES .SVG -->
     <title>Historia de la programacion</title>
 </head>
 <body>
-    <nav id="navegacion"> 
-        <img>
+    <nav class="navegacion"> 
+        <img alt="logoinicio">
         <a href="index.html">Inicio</a>
         <a href="historia.html">HISTORIA</a>
         <a href="juego.html">JUGUEMOS</a>
@@ -61,8 +61,8 @@
             <h2>Veamos un video...</h2>
                 <div id="div_video">
                     <video poster="assets/imagenes/img-video.jpg">
-                        <source src="assets/video/historia-Comp.mp4" type="mp4">
-                        <source src="assets/video/historia-Comp.ogv" type="ogv">
+                        <source src="assets/video/historia-Comp.mp4" type="video/mp4">
+                        <source src="assets/video/historia-Comp.ogv" type="video/ogg">
                     </video>
 
                     <div id="barra_video">
@@ -70,7 +70,7 @@
                             <button id="boton_play">PLAY</button>
                             <button id="boton_pausa">PAUSE</button>
                         </div>
-                        <p>Duracion video = <span id="duracion_video">7:20</span></p>
+                        <p>Duracion video = <span id="duracion_video">0:00</span></p>
                         
 
                     </div>
@@ -90,7 +90,7 @@
         </div>
     </footer>
 
-<script src="script.js"></script>
+<script src="script.js"> </script>
 </body>
 
 </html>
