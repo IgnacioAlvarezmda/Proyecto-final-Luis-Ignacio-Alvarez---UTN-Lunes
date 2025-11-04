@@ -6,7 +6,8 @@ const botonpausa= document.getElementById("boton_pausa");
 
 /*------mostrar duracion video------*/
 if (videohistoria){
-    const duracionvideo= document.querySelector("duracion_video");
+    const duracionvideo= document.querySelector("#duracion_video");
+
     const convertirtiempo= (tiempo)=>{
         let tiempoconvertido= Math.floor(tiempo);
         let minutos= Math.floor(tiempoconvertido / 60);
@@ -43,3 +44,15 @@ const transparentar_nav= ()=>{
     else{nav.classList.remove('navegacion_escroleada');}
 }
 window.addEventListener('scroll', transparentar_nav);
+
+/*-----animaciones hisotira-----*/
+
+const divtexto= document.getElementsByClassName('.div_texto');const imageneshistoria= document.getElementsByClassName('.imageneshistoria');
+const divinfo= document.getElementsByClassName('.divs_info');
+    
+    divinfo.addEventListener('onfocus'),(e)=>{
+        divtexto.classList.add('apariciones_laterales_texto_historia_izq');
+        imageneshistoria.classList.add('apariciones_laterales_texto_historia_der');
+        console.log('hola');
+    }
+    
