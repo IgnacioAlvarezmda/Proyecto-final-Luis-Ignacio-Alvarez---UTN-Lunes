@@ -9,10 +9,8 @@ const duracionvideo = document.querySelector("#duracion_video")
 
 body.addEventListener("DOMContentLoaded", ()=>{
     let duracionconvertida= convertirtiempo(videohistoria.duration);
-
     duracionvideo.textContent = videohistoria.duration;
 });
-
 
 
 const convertirtiempo= (tiempo)=>{
@@ -35,3 +33,16 @@ botonpausa.addEventListener("click", ()=>{
     videohistoria.pause();
     console.log("El video se ha pausado");
 }); 
+
+/*------------nav-------------*/
+
+const nav = document.getElementById('navegacion');
+
+const transparentar_nav= ()=>{
+    if (window.scrollY > 0)
+        nav.classList.add('navegacion_escroleada');
+    else
+        nav.classList.remove('navegacion_escroleada');
+}
+
+window.addEventListener('scroll', transparentar_nav);

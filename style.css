@@ -26,11 +26,11 @@ body {
 
 #navegacion{
     margin: 10px;
-    padding: 50px;
+    padding: 40px;
     top: -15px;
     left: -15px;
 
-    background-color: #FFFFFF;;
+    background-color: rgba(0, 0, 0, 0);
     
     width: 101%;
     box-sizing: border-box;
@@ -43,7 +43,7 @@ body {
 }
 
 #navegacion_escroleada{
-    background-color: var(--color-azul-con-transparencia-2);
+    background-color: #FFFFFF;
 }
 
 #navegacion a{
@@ -57,9 +57,8 @@ body {
     font-weight: 500;
     font-family: var(--tipografia);
     
-    background-color: var(--color-blanco-fondoYsombras);
     padding: 5px;
-    margin-left: 50px;
+    margin: 10px;
 }
 
 #navegacion a:hover{
@@ -93,10 +92,10 @@ body {
     font-weight: 500;
     text-align: center;
     font-size: 4em;
-    color: var(--color-sombra-negra);
+    color: var(--color-);
     text-shadow:1px 1px white,
                 2px 2px gray;
-    padding: 30px;
+    padding: 40px;
 }
 
 
@@ -148,7 +147,7 @@ body {
     position: relative;
     height: 70vh;
     width: 100%;    
-    background-image: linear-gradient(rgba(47, 54, 69, 0.7), rgba(47, 54, 69, 0.7)), url(./assets/imagenes/historia-programacion.jpg);
+    background-image: linear-gradient(var(--color-azul-con-transparencia)), url(./assets/imagenes/historia-programacion.jpg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -285,37 +284,42 @@ video{
 
 #mainjuego{
     width: 100%;
+    margin: 0px;
 }
 
 #titulojuego{
-    background-image: linear-gradient(rgba(47, 54, 69, 0.7), rgba(47, 54, 69, 0.7)), url(/assets/imagenes/img2.jpg);
+    background-image: linear-gradient(var(--color-azul-con-transparencia)), url(/assets/imagenes/img2.jpg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    padding: 280px;  
+    padding: 280px;
+
 }
 #titulojuego h2{
-color: var(--color-blanco-fondoYsombras);
+    color: var(--color-blanco-fondoYsombras);
     font-family: var(--tipografia);
-    font-size: 4.5em;
+    font-size: 4em;
     font-weight: 400;
     text-align: center;
     text-transform: capitalize;
     text-shadow:2px 3px var(--color-sombra-gris), 
                 5px 6px var(--color-sombra-negra);
+    
 }
 
 #juego{
     margin: 0;
     padding: 20px;
     box-sizing: border-box;
+    height: auto;
     display: flex;
+
     flex-direction: column;
     justify-content: center;
-    align-items: center;   
+    align-items: center;
 }
 .divrompecabezas{
-background-color: var(--color-azul-con-transparencia-2);
+background-color: var(--color-blanco-fondoYsombras);
 width: 950px;
 height: 350px;
 margin: 5px;
@@ -323,21 +327,24 @@ display: flex;
 flex-direction: row;
 justify-content: center;
 align-items: center;
-border: 2px solid var(--color-sombra-negra);
 }
 
 #textojuego
 {
-    height: 200px;
-    width: 500px;
+    height: auto;
+    width: 30%;
+    padding: 10px;
+
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     font-family: var(--tipografia);
     font-weight: 400;
     font-size: 1.1em;
     text-align: center;
-
+    border-radius: 15%;
     border: 3px solid var(--color-sombra-negra);
 }
 #botonreiniciar{
@@ -369,6 +376,10 @@ border: 2px solid var(--color-sombra-negra);
     font-size: 15px;
 
     overflow: hidden;
+}
+.caja_vacia{
+    margin: 0px;
+    border: .2px dashed var(--color-azul);
 }
 
 
@@ -414,6 +425,19 @@ footer{
 }
 
 
+/*------animaciones---*/
+
+@keyframes apariciones_laterales_texto_hisotia_der{}
+@keyframes apariciones_laterales_texto_hisotia_izq{}
+
+@keyframes apariciones_img_historia_der{}
+@keyframes apariciones_img_historia_izq{}  
+
+@keyframes apariciones_anclas_index{}
+
+/*----mediaquerys ---*/
+
+
 @media screen and (max-width: 1200px) {
     #juego{
         flex-direction: row;
@@ -434,6 +458,3 @@ footer{
         margin-bottom: 20px;
     }
 }
-
-
-
