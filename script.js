@@ -48,9 +48,42 @@ const divtexto= document.getElementsByClassName('.div_texto');
 const imageneshistoria= document.getElementsByClassName('.imageneshistoria');
 const divinfo= document.getElementsByClassName('.divs_info');
     
-/*----------------JUEGO---------------*/
+/*----------------JUEGO---------------------*/
 
-const zonadestino= document.getElementsByClassName('caja_vacia');
-const pieza1= document.getElementById('pieza1');
-const pieza2= document.getElementById('pieza2');
-const pieza3= document.getElementById('pieza3');
+const botonreiniciar= document.getElementById('botonreiniciar');
+const piezas= document.querySelectorAll(".cajapiezas"); 
+const cajas= document.querySelectorAll('.caja');
+
+
+piezas.forEach(pieza=>{
+    if (!pieza.id) {
+        return; 
+    }
+
+    pieza.addEventListener('dragstart',(event)=>{
+        console.log(event.target.id);
+        event.dataTransfer.setData('text/plain',event.target.id);
+    });
+}); 
+
+
+cajas.forEach(caja=>{
+    
+    caja.addEventListener('dragover',(e)=>{
+        e.preventDefault(); 
+    });
+
+    caja.addEventListener('drop',(e)=>{
+        e.preventDefault();
+
+        const data = e.dataTransfer.getData('text/plain');
+        const piezaarrastrada= document.getElementById(data);
+
+        e.currentTarget.appendChild(piezaarrastrada);
+    });
+});
+
+const reiniciar=()=>{
+    location.reload();
+};
+botonreiniciar.addEventListener('click', reiniciar);
