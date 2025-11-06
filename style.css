@@ -25,7 +25,7 @@ body {
 }
 
 .navegacion{
-    padding: 40px;
+    padding: 25px;
 
     background-color: rgba(0, 0, 0, 0);
     
@@ -60,10 +60,13 @@ body {
     
     padding: 5px;
     margin: 10px;
+    transition: all 0.05s;
+    display: inline-block;
 }
 
 .navegacion a:hover{
-    text-shadow: 0.7px 0.7px var(--color-sombra-negra);
+    text-shadow:3px 4px var(--color-sombra-negra);
+    transform: translate(2px,2px);
 }
 /*----------------index-----------*/
 #header_index{
@@ -94,8 +97,8 @@ body {
     text-align: center;
     font-size: 4em;
     color: var(--color-);
-    text-shadow:1px 1px white,
-                2px 2px gray;
+    text-shadow:1px 1px var(--color-blanco-fondoYsombras),
+                2px 2px var(--color-sombra-gris);
     padding: 40px;
 }
 
@@ -196,17 +199,18 @@ body {
 }
 
 .div_texto h2{
-    
+    margin: 25px;
     max-width: 100%;
     text-align: center;
     font-family: var(--tipografia);
     font-size: 3em;
     font-weight: 500;
     color: var(--color-azul);
-    text-shadow:1px 1px white,
-                    2px 2px gray;
+    text-shadow:1px 1px var(--color-blanco-fondoYsombras),
+                2px 2px var(--color-sombra-gris);
 }
 .div_texto p{
+    margin: 25px;
     font-family: var(--tipografia);
     color: var(--color-azul);
     font-size: 1.1em;
@@ -238,8 +242,8 @@ body {
     font-size: 3em;
     font-weight: 500;
     color: var(--color-sombra-negra);
-    text-shadow:1px 1px white,
-                2px 2px gray;
+    text-shadow:1px 1px var(--color-blanco-fondoYsombras),
+                2px 2px var(--color-sombra-gris);
     margin: 30px;
     padding: 50px;
 }
@@ -254,29 +258,23 @@ body {
 }
 video{
     width: 100%;
-    
 }
 
 #barra_video{
     width: 100%;
     margin: 2px;
     background-color: var(--color-azul);
-
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-
 #botonera{
     padding: 5px;
     margin: 5px;
-    
     display: flex;
     justify-content: center;
     align-items: center;
-
-    background-color: var(--color-azul-con-transparencia-2);
-
+    background-color: var(--color-azul);
 }
 #botonera +p {
     margin: 30px;
@@ -285,6 +283,23 @@ video{
     justify-self: center;
     font-family: var(--tipografia);
     color: var(--color-blanco-fondoYsombras);
+}
+#boton_play{
+    padding: 10px;
+    margin: 7px;
+    width: 55px;
+    box-shadow: 2px 2px 0 var(--color-sombra-gris)
+}
+#boton_pausa{
+    padding: 10px;
+    margin: 7px;
+    width: 55px;
+    box-shadow: 2px 2px 0 var(--color-sombra-gris)
+}
+#boton_play:active, #boton_pausa:active{
+    box-shadow: none;
+    transition: all 0.1s ease;
+    transform: translate(4px);
 }
 
 /*-----------------JUEGO----------------*/
@@ -383,11 +398,14 @@ align-items: center;
     font-size: 15px;
 
     overflow: hidden;
-}
+    }
 .caja_vacia{
     margin: 0px;
     border: .2px dashed var(--color-azul);
-}
+    }
+.caja:hover{
+    background-color: var(--color-azul);
+    }
 
 
 /*----------------FOOTER------------------*/

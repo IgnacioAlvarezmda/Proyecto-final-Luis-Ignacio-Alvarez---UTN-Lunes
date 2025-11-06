@@ -2,37 +2,34 @@
 const videohistoria= document.querySelector("video");
 const botonplay= document.getElementById("boton_play");
 const botonpausa= document.getElementById("boton_pausa");
-
+const duracionvideo= document.querySelector("#duracion_video");
 
 /*------mostrar duracion video------*/
 if (videohistoria){
-    const duracionvideo= document.querySelector("#duracion_video");
-
+    ;
     const convertirtiempo= (tiempo)=>{
         let tiempoconvertido= Math.floor(tiempo);
         let minutos= Math.floor(tiempoconvertido / 60);
         let segundos= tiempoconvertido % 60;
-
         if (segundos<10){segundos = "0" + segundos;}
-
         return `${minutos}:${segundos}`;
         }
-
-    videohistoria.addEventListener("loadedmetadata",()=>{
-        let duracionfinal= convertirtiempo(videohistoria.duration);
+    
+    let duracionfinal= convertirtiempo(videohistoria.duration);
+    
+    videohistoria.addEventListener("timeupdate",()=>{
         duracionvideo.textContent= duracionfinal;
-        });
+        let tiempoActual = convertirtiempo(videohistoria.currentTime);
+        duracionvideo.textContent = `${tiempoActual} / ${duracionfinal}`;
+    });
 
-    /*-------------play y pausa---------------*/
-
-    botonplay.addEventListener("click", ()=>{
+    botonplay.addEventListener("click",()=>{
         videohistoria.play();
         });
-
-    botonpausa.addEventListener("click", ()=>{
+    botonpausa.addEventListener("click",()=>{
         videohistoria.pause();
         }); 
-}
+} 
 
 /*------------nav-------------*/
 
@@ -47,12 +44,13 @@ window.addEventListener('scroll', transparentar_nav);
 
 /*-----animaciones hisotira-----*/
 
-const divtexto= document.getElementsByClassName('.div_texto');const imageneshistoria= document.getElementsByClassName('.imageneshistoria');
+const divtexto= document.getElementsByClassName('.div_texto');
+const imageneshistoria= document.getElementsByClassName('.imageneshistoria');
 const divinfo= document.getElementsByClassName('.divs_info');
     
-    divinfo.addEventListener('onfocus'),(e)=>{
-        divtexto.classList.add('apariciones_laterales_texto_historia_izq');
-        imageneshistoria.classList.add('apariciones_laterales_texto_historia_der');
-        console.log('hola');
-    }
-    
+/*----------------JUEGO---------------*/
+
+const zonadestino= document.getElementsByClassName('caja_vacia');
+const pieza1= document.getElementById('pieza1');
+const pieza2= document.getElementById('pieza2');
+const pieza3= document.getElementById('pieza3');
