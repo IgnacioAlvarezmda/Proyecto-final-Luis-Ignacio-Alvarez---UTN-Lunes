@@ -196,6 +196,9 @@ body{
     width: 50%;
     height: auto;
     margin: 20px;
+    opacity: 0;
+    transition: all 1s ease-out;
+    transform: translateX(-100px);
 }
 
 .div_texto h2{
@@ -220,8 +223,15 @@ body{
     width: 50%;
     margin: 20px;
     border: 1px solid var(--color-sombra-negra);
+    opacity: 0;
+    transition: all 1s ease-out;
+    transform: translateX(100px);
 }
 
+.divs_info.mostrar>*{
+    opacity: 1;
+    transform: translateX(0);
+}
 
 /*--------------------*/
 

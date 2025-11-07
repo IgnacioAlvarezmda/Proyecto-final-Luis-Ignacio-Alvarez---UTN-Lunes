@@ -35,7 +35,7 @@ if (videohistoria){
 
 const nav= document.querySelector('.navegacion');
 
-const transparentar_nav= ()=>{
+const transparentar_nav=()=>{
     if (window.scrollY > 0){
         nav.classList.add('navegacion_escroleada');} 
     else{nav.classList.remove('navegacion_escroleada');}
@@ -44,10 +44,26 @@ window.addEventListener('scroll', transparentar_nav);
 
 /*-----animaciones hisotira-----*/
 
-const divtexto= document.getElementsByClassName('.div_texto');
-const imageneshistoria= document.getElementsByClassName('.imageneshistoria');
-const divinfo= document.getElementsByClassName('.divs_info');
+
+
+function aparecer_scroll() {
     
+    const divs_que_aparecen = document.querySelectorAll('.divs_info');
+    
+    const alturaventana= window.innerHeight;
+    const altura_activadora= alturaventana*0.85;
+
+    divs_que_aparecen.forEach(elemento=>{
+        const posicionelemento= elemento.getBoundingClientRect().top;
+
+        if (posicionelemento<altura_activadora){
+            elemento.classList.add('mostrar');}
+        });
+}
+
+window.addEventListener('scroll', aparecer_scroll);
+document.addEventListener('DOMContentLoaded', aparecer_scroll);
+
 /*----------------JUEGO---------------------*/
 
 const botonreiniciar= document.getElementById('botonreiniciar');
@@ -68,7 +84,6 @@ piezas.forEach(pieza=>{
 
 
 cajas.forEach(caja=>{
-    
     caja.addEventListener('dragover',(e)=>{
         e.preventDefault(); 
     });
@@ -79,6 +94,7 @@ cajas.forEach(caja=>{
         const data = e.dataTransfer.getData('text/plain');
         const piezaarrastrada= document.getElementById(data);
 
+        e.currentTarget.innerHTML="";
         e.currentTarget.appendChild(piezaarrastrada);
     });
 });
@@ -87,3 +103,10 @@ const reiniciar=()=>{
     location.reload();
 };
 botonreiniciar.addEventListener('click', reiniciar);
+
+/* 
+LAS IMAGENES SE ME SUPERPONEN, NO CONTEMPLA QUE SI HAY OTRA IMAGEN DENTRO, NO DEBE METER UNA IMAGEN MAS
+
+TAMPOCO LOGRO AUTENTICAR SI LAS IMAGENES ESTAN EN EL LUGAR CORRECTO
+
+*/
