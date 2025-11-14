@@ -68,7 +68,7 @@ body{
     text-shadow:3px 4px var(--color-sombra-negra);
     transform: translate(2px,2px);
 }
-/*----------------index-----------*/
+/*----------------index---------------------------------------------*/
 #header_index{
     width: 100%;
     height: 100vh;
@@ -121,6 +121,9 @@ body{
     margin: 20px;
     display: flex;
     flex-direction: column;
+    transition: all 1s ease-out;
+    opacity: 1;
+    transform: translateY(0);
 }
 .anclasindex h3{
     text-align: center;
@@ -142,17 +145,22 @@ body{
     text-decoration: none;
 }
 
+.anclasindex_oculta{
+    opacity: 0;
+    transform: translateX(200px);
+}
+
 #imgchica{
     height: 346px;
 }
 
-/*----------------HISTORIA------------------*/
+/*----------------HISTORIA---------------------------------------*/
 #header_historia{
     position: relative;
     height: 70vh;
     width: 100%;    
     background-image: linear-gradient(var(--color-azul-con-transparencia)), url(./assets/imagenes/historia-programacion.jpg);
-    background-size: cover;
+    background-size:cover ;
     background-position: center;
     background-attachment: fixed;
     display: flex;
@@ -164,7 +172,7 @@ body{
     width: 100%;
     padding: 20px;
     font-family: var(--tipografia);
-    font-size: 4.5em;
+    font-size: 4em;
     font-weight: 400;
     text-align: center;
     text-shadow:2px 3px var(--color-sombra-gris), 
@@ -312,7 +320,7 @@ video{
     transform: translate(4px);
 }
 
-/*-----------------JUEGO----------------*/
+/*-----------------JUEGO-----------------------------------------------*/
 
 #mainjuego{
     width: 100%;
@@ -421,7 +429,7 @@ video{
 }
 
 
-/*----------------FOOTER------------------*/
+/*----------------FOOTER---------------------------------------------*/
 footer{
     margin: 0;
     padding: 80px;
@@ -462,16 +470,6 @@ footer{
 }
 
 
-/*------animaciones---*/
-
-@keyframes apariciones_laterales_texto_historia_der{}
-@keyframes apariciones_laterales_texto_hisotia_izq{}
-
-@keyframes apariciones_img_historia_der{}
-@keyframes apariciones_img_historia_izq{}  
-
-@keyframes apariciones_anclas_index{}
-
 /*----mediaquerys ---*/
 
 
@@ -493,5 +491,36 @@ footer{
         width: 90%;
         height: auto;
         margin-bottom: 20px;
+    }
+    #divpadrecontenido{
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+    }
+    .cajapiezas{
+        transform: rotate(-90deg);
+    }
+}
+@media (max-width: 575px){
+
+    body{
+        font-size: 14px;
+    }
+    .navegacion a{
+        font-size: 1.2em;
+        margin: 5px;
+    }
+    .navegacion{
+        padding: 15px;
+        width: 100vw;
+    }
+    #titulojuego{
+        width: 100%;
+        justify-self: center;
+        align-self:center;
+    }
+    #titulojuego h2{
+        font-size: 2.5em;
+        padding: 150px 20px;
     }
 }

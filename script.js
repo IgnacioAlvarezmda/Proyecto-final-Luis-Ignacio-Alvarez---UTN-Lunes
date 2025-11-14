@@ -31,67 +31,68 @@ if (videohistoria){
         }); 
 } 
 
-/*------------nav-------------*/
+/*------------nav---------------------------------*/
 
-const nav= document.querySelector('.navegacion');
+const nav= document.querySelector(".navegacion");
 
 const transparentar_nav=()=>{
     if (window.scrollY > 0){
-        nav.classList.add('navegacion_escroleada');} 
-    else{nav.classList.remove('navegacion_escroleada');}
+        nav.classList.add("navegacion_escroleada");} 
+    else{nav.classList.remove("navegacion_escroleada");}
 }
 window.addEventListener('scroll', transparentar_nav);
 
-/*-----animaciones hisotira-----*/
+/*-----animaciones hisotira-------------------------*/
 
+const alturaventana= window.innerHeight;
+const altura_activadora= alturaventana*0.50;
 
-
-function aparecer_scroll() {
+function aparecer_scroll(){
     
-    const divs_que_aparecen = document.querySelectorAll('.divs_info');
-    
-    const alturaventana= window.innerHeight;
-    const altura_activadora= alturaventana*0.85;
-
+    const divs_que_aparecen= document.querySelectorAll(".divs_info");
     divs_que_aparecen.forEach(elemento=>{
         const posicionelemento= elemento.getBoundingClientRect().top;
-
         if (posicionelemento<altura_activadora){
             elemento.classList.add('mostrar');}
         });
 }
+window.addEventListener('scroll', aparecer_scroll)
+/*-------------ANIMACIONES-INDEX---------------------------*/
 
-window.addEventListener('scroll', aparecer_scroll);
-document.addEventListener('DOMContentLoaded', aparecer_scroll);
-
+function aparecen_divs(){
+    const divs_index_aparecen= document.querySelectorAll(".anclasindex");
+    divs_index_aparecen.forEach(divs=>{
+        const posicionelemento= divs.getBoundingClientRect().top;
+        if(posicionelemento<altura_activadora){
+            divs.classList.remove("anclasindex_oculta")
+        }})
+}
+window.addEventListener('scroll', aparecen_divs, aparecer_scroll)
 /*----------------JUEGO---------------------*/
 
-const botonreiniciar= document.getElementById('botonreiniciar');
+const botonreiniciar= document.getElementById("botonreiniciar");
 const piezas= document.querySelectorAll(".cajapiezas"); 
-const cajas= document.querySelectorAll('.caja');
-
+const cajas= document.querySelectorAll(".caja");
 
 piezas.forEach(pieza=>{
     if (!pieza.id) {
         return; 
     }
-
-    pieza.addEventListener('dragstart',(event)=>{
+    pieza.addEventListener("dragstart",(event)=>{
         console.log(event.target.id);
-        event.dataTransfer.setData('text/plain',event.target.id);
+        event.dataTransfer.setData("text/plain",event.target.id);
     });
 }); 
 
-
 cajas.forEach(caja=>{
-    caja.addEventListener('dragover',(e)=>{
+    caja.addEventListener("dragover",(e)=>{
         e.preventDefault(); 
     });
 
-    caja.addEventListener('drop',(e)=>{
+    caja.addEventListener("drop",(e)=>{
         e.preventDefault();
 
-        const data = e.dataTransfer.getData('text/plain');
+        const data = e.dataTransfer.getData("text/plain");
         const piezaarrastrada= document.getElementById(data);
 
         e.currentTarget.innerHTML="";
@@ -102,7 +103,7 @@ cajas.forEach(caja=>{
 const reiniciar=()=>{
     location.reload();
 };
-botonreiniciar.addEventListener('click', reiniciar);
+botonreiniciar.addEventListener("click", reiniciar);
 
 /* 
 LAS IMAGENES SE ME SUPERPONEN, NO CONTEMPLA QUE SI HAY OTRA IMAGEN DENTRO, NO DEBE METER UNA IMAGEN MAS
