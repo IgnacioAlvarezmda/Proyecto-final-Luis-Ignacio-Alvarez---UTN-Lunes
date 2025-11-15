@@ -68,14 +68,15 @@ function aparecen_divs(){
         }})
 }
 window.addEventListener('scroll', aparecen_divs, aparecer_scroll)
+
 /*----------------JUEGO---------------------*/
 
 const botonreiniciar= document.getElementById("botonreiniciar");
 const piezas= document.querySelectorAll(".cajapiezas"); 
-const cajas= document.querySelectorAll(".caja");
+const cajasvacias= document.querySelectorAll(".caja_vacia");
 
 piezas.forEach(pieza=>{
-    if (!pieza.id) {
+    if (!pieza.id){
         return; 
     }
     pieza.addEventListener("dragstart",(event)=>{
@@ -84,19 +85,33 @@ piezas.forEach(pieza=>{
     });
 }); 
 
-cajas.forEach(caja=>{
+cajasvacias.forEach(caja=>{
     caja.addEventListener("dragover",(e)=>{
-        e.preventDefault(); 
+    e.preventDefault(); 
     });
 
     caja.addEventListener("drop",(e)=>{
-        e.preventDefault();
+    e.preventDefault();
 
-        const data = e.dataTransfer.getData("text/plain");
-        const piezaarrastrada= document.getElementById(data);
 
-        e.currentTarget.innerHTML="";
-        e.currentTarget.appendChild(piezaarrastrada);
+        const cajausada=e.currentTarget.querySelector(".cajapiezas")
+
+        if(!cajausada){
+            const textocaja= e.currentTarget.querySelector(".textoarrastre")
+            const data=e.dataTransfer.getData("text/plain");
+            const piezaarrastrada=document.getElementById(data);
+
+            e.currentTarget.appendChild(piezaarrastrada);
+
+            if(textocaja){
+                textocaja.style.display="none"
+            }
+        else{
+            cajausada.classList.add("sacudir")
+        }
+        setTimeout(()=>{
+                cajausada.classList.remove('sacudir');},300);
+        }
     });
 });
 
