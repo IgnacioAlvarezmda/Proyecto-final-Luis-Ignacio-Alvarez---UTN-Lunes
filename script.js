@@ -71,9 +71,15 @@ window.addEventListener('scroll', aparecen_divs, aparecer_scroll)
 
 /*----------------JUEGO---------------------*/
 
+
+
+
+
 const botonreiniciar= document.getElementById("botonreiniciar");
 const piezas= document.querySelectorAll(".cajapiezas"); 
 const cajasvacias= document.querySelectorAll(".caja_vacia");
+const contenedor_rompecabezas= document.getElementById('divcajas'); 
+const mensajefinal= document.getElementById('mensajefinal');
 
 piezas.forEach(pieza=>{
     if (!pieza.id){
@@ -84,6 +90,10 @@ piezas.forEach(pieza=>{
         event.dataTransfer.setData("text/plain",event.target.id);
     });
 }); 
+
+
+
+
 
 cajasvacias.forEach(caja=>{
     caja.addEventListener("dragover",(e)=>{
@@ -106,23 +116,50 @@ cajasvacias.forEach(caja=>{
             if(textocaja){
                 textocaja.style.display="none"
             }
-        else{
+            comprobarjuegoterminado();
+        }else{
             cajausada.classList.add("sacudir")
-        }
+
+        
         setTimeout(()=>{
-                cajausada.classList.remove('sacudir');},300);
+                cajausada.classList.remove('sacudir');},500);
         }
     });
 });
+
+
+
+
+
+function comprobarjuegoterminado() {
+    const cajascolocadas= contenedor_rompecabezas.querySelectorAll(".cajapiezas");
+    if(cajascolocadas.length === piezas.length){
+        comprobarjuegocorrecto()
+    }
+}
+
+function comprobarjuegocorrecto(){
+    let bienordenadas= true;
+    cajasvacias.forEach(caja=>{
+        const pieza_actual= caja.querySelector(".cajapiezas");
+
+        if(!pieza_actual || pieza_actual.dataset.target !== caja.id){
+            bienordenadas= false;
+        }
+    });
+
+    if(bienordenadas){
+        mensajefinal.textContent="!¡ MUY BIEN ¡!";
+    } else {
+        mensajefinal.textContent = "!¡ ESTUVISTE CERCA, INTENTALO DE NUEVO ¡!";
+    }
+    mensajefinal.classList.add("visible");
+    contenedor_rompecabezas.classList.add("animado");
+}
+
+
 
 const reiniciar=()=>{
     location.reload();
 };
 botonreiniciar.addEventListener("click", reiniciar);
-
-/* 
-LAS IMAGENES SE ME SUPERPONEN, NO CONTEMPLA QUE SI HAY OTRA IMAGEN DENTRO, NO DEBE METER UNA IMAGEN MAS
-
-TAMPOCO LOGRO AUTENTICAR SI LAS IMAGENES ESTAN EN EL LUGAR CORRECTO
-
-*/

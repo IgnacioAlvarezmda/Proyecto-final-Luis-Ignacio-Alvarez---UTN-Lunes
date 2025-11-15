@@ -33,22 +33,24 @@
                 <h3>ARMA EL ROMPECABEZAS</h3> 
                 <p>Armemos el rompecabezas y veamos que imagen es...</p>
                 <button id="botonreiniciar">Jugar de nuevo</button>
+                
             </div>
 
-            <div class="divrompecabezas">
-                <img class="caja cajapiezas" id="pieza2" src="/assets/imagenes/rompe2.png" alt="pieza de rompecabezas">
-                <img class="caja cajapiezas" id="pieza1" src="/assets/imagenes/rompe1.png" alt="pieza de rompecabezas">
-                <img class="caja cajapiezas" id="pieza3" src="/assets/imagenes/rompe3.png" alt="pieza de rompecabezas">
+            <div class="divrompecabezas" id="piezas_inicial">
+                <h2 id="mensajefinal"></h2>
+                <img class="caja cajapiezas" id="pieza2" src="/assets/imagenes/rompe2.png" alt="pieza de rompecabezas" data-target="destino-B">
+                <img class="caja cajapiezas" id="pieza1" src="/assets/imagenes/rompe1.png" alt="pieza de rompecabezas" data-target="destino-A">
+                <img class="caja cajapiezas" id="pieza3" src="/assets/imagenes/rompe3.png" alt="pieza de rompecabezas" data-target="destino-C">
             </div>
             
             <div class="divrompecabezas" id="divcajas">
-                <div class="caja caja_vacia">
+                <div class="caja caja_vacia" id="destino-A">
                     <p class="textoarrastre">Arrastre la imagen y sueltela aqui</p>
                 </div>
-                <div class="caja caja_vacia">
+                <div class="caja caja_vacia" id="destino-B">
                     <p class="textoarrastre">Arrastre la imagen y sueltela aqui</p>
                 </div>
-                <div class="caja caja_vacia">
+                <div class="caja caja_vacia" id="destino-C">
                     <p class="textoarrastre">Arrastre la imagen y sueltela aqui</p>
                 </div>
             </div>
