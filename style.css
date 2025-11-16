@@ -12,6 +12,7 @@
     --color-sombra-gris: #808080;
     --color-sombra-negra: #000000;
     --tipografia: Raleway , sans-serif;
+    --color-azul-con-transparencia-3:#767a8184;
 }
 
 
@@ -377,7 +378,7 @@ video{
 
 #textojuego{
     height: auto;
-    width: 50%;
+    width: 60%;
     padding: 20px;
 
     display: flex;
@@ -452,6 +453,9 @@ video{
     transform: translateY(20px);
     transition: all 0.8s ease-out;
     z-index: 200;
+    background-color: var(--color-azul-con-transparencia-3);
+    padding: 40px;
+    border-radius: 10px;
 }
 
 #mensajefinal.visible{
@@ -465,7 +469,7 @@ video{
     border: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+
 }
 
 /*----------------FOOTER---------------------------------------------*/

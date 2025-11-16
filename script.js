@@ -6,19 +6,22 @@ const duracionvideo= document.querySelector("#duracion_video");
 
 /*------mostrar duracion video------*/
 if (videohistoria){
-    ;
     const convertirtiempo= (tiempo)=>{
         let tiempoconvertido= Math.floor(tiempo);
-        let minutos= Math.floor(tiempoconvertido / 60);
+        let minutos= Math.floor(tiempoconvertido/60);
         let segundos= tiempoconvertido % 60;
-        if (segundos<10){segundos = "0" + segundos;}
+        if(segundos<10) {segundos= "0" + segundos;}
         return `${minutos}:${segundos}`;
         }
-    
+
     let duracionfinal= convertirtiempo(videohistoria.duration);
     
+    videohistoria.addEventListener("loadedmetadata",()=>{
+        duracionvideo.textContent= duracionfinal; 
+    });
+
+
     videohistoria.addEventListener("timeupdate",()=>{
-        duracionvideo.textContent= duracionfinal;
         let tiempoActual = convertirtiempo(videohistoria.currentTime);
         duracionvideo.textContent = `${tiempoActual} / ${duracionfinal}`;
     });
@@ -30,6 +33,8 @@ if (videohistoria){
         videohistoria.pause();
         }); 
 } 
+
+/*Funciona, pero recargando la pagina, como si la primera vez duracion final no llegase a obtener los datos del video*/
 
 /*------------nav---------------------------------*/
 
@@ -45,7 +50,7 @@ window.addEventListener('scroll', transparentar_nav);
 /*-----animaciones hisotira-------------------------*/
 
 const alturaventana= window.innerHeight;
-const altura_activadora= alturaventana*0.50;
+const altura_activadora= alturaventana*0.75;
 
 function aparecer_scroll(){
     
@@ -70,9 +75,6 @@ function aparecen_divs(){
 window.addEventListener('scroll', aparecen_divs, aparecer_scroll)
 
 /*----------------JUEGO---------------------*/
-
-
-
 
 
 const botonreiniciar= document.getElementById("botonreiniciar");
@@ -159,7 +161,5 @@ function comprobarjuegocorrecto(){
 
 
 
-const reiniciar=()=>{
-    location.reload();
-};
+const reiniciar=()=>location.reload();
 botonreiniciar.addEventListener("click", reiniciar);
